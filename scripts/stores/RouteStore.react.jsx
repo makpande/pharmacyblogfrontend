@@ -1,5 +1,5 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var Constants = require('../constants/Constants.js');
 var SessionStore = require('../stores/SessionStore.react.jsx');
 var StoryStore = require('../stores/StoryStore.react.jsx');
 var EventEmitter = require('events').EventEmitter;
@@ -13,11 +13,11 @@ var router = Router.create({
   location: null // Router.HistoryLocation
 });
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var RouteStore = assign({}, EventEmitter.prototype, {
-  
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -39,14 +39,14 @@ var RouteStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-RouteStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
-  SmallAppDispatcher.waitFor([
+RouteStore.dispatchToken = AppDispatcher.register(function(payload) {
+    AppDispatcher.waitFor([
     SessionStore.dispatchToken,
     StoryStore.dispatchToken
   ]);
 
   var action = payload.action;
-  
+
   switch(action.type) {
 
     case ActionTypes.REDIRECT:
@@ -60,16 +60,15 @@ RouteStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
         $(document).foundation();
       }
       break;
-    
+
     case ActionTypes.RECEIVE_CREATED_STORY:
       router.transitionTo('app');
       break;
 
     default:
   }
-  
+
   return true;
 });
 
 module.exports = RouteStore;
-

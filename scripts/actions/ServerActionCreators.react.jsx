@@ -1,12 +1,12 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var Constants = require('../constants/Constants.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 
 module.exports = {
 
   receiveLogin: function(json, errors) {
-    SmallAppDispatcher.handleServerAction({
+      AppDispatcher.handleServerAction({
       type: ActionTypes.LOGIN_RESPONSE,
       json: json,
       errors: errors
@@ -14,26 +14,25 @@ module.exports = {
   },
 
   receiveStories: function(json) {
-    SmallAppDispatcher.handleServerAction({
+      AppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_STORIES,
       json: json
     });
   },
 
   receiveStory: function(json) {
-    SmallAppDispatcher.handleServerAction({
+      AppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_STORY,
       json: json
     });
   },
-  
+
   receiveCreatedStory: function(json, errors) {
-    SmallAppDispatcher.handleServerAction({
+      AppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_CREATED_STORY,
       json: json,
       errors: errors
     });
   }
-  
-};
 
+};

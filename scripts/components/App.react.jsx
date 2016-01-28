@@ -11,12 +11,12 @@ function getStateFromStores() {
   };
 }
 
-var SmallApp = React.createClass({
+var App = React.createClass({
 
   getInitialState: function() {
     return getStateFromStores();
   },
-  
+
   componentDidMount: function() {
     SessionStore.addChangeListener(this._onChange);
   },
@@ -32,7 +32,7 @@ var SmallApp = React.createClass({
   render: function() {
     return (
       <div className="app">
-        <Header 
+        <Header
           isLoggedIn={this.state.isLoggedIn}
           email={this.state.email} />
         <RouteHandler/>
@@ -42,5 +42,4 @@ var SmallApp = React.createClass({
 
 });
 
-module.exports = SmallApp;
-
+module.exports = App;

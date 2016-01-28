@@ -22,7 +22,7 @@ var Header = React.createClass({
           <ul className="dropdown">
             <li><a href='#' onClick={this.logout}>Logout</a></li>
           </ul>
-        </li> 
+        </li>
       </ul>
     ) : (
       <ul className="right">
@@ -33,17 +33,25 @@ var Header = React.createClass({
 
     var leftNav = this.props.isLoggedIn ? (
       <ul className="left">
-        <li><Link to="new-story">New story</Link></li>
+        <li><Link to="stories">Topics</Link></li>
       </ul>
     ) : (
-      <div></div>
+      <div>
+        <div>
+        <ul className="menu simple">
+          <li><Link to="pharmacy">Pharmacy</Link></li>          
+          <li><Link to="about">About</Link></li>
+          <li><Link to="contact">Contact</Link></li>
+        </ul>
+      </div>
+      </div>
     );
 
     return (
       <nav className="top-bar" data-topbar role="navigation">
         <ul className="title-area">
           <li className="name">
-            <h1><a href="#"><strong>S</strong></a></h1>
+            <h1><a href="#"><strong>Home</strong></a></h1>
           </li>
           <li className="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
@@ -58,4 +66,3 @@ var Header = React.createClass({
 });
 
 module.exports = Header;
-

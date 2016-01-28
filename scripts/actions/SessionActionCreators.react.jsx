@@ -1,13 +1,13 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var Constants = require('../constants/Constants.js');
 var WebAPIUtils = require('../utils/WebAPIUtils.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 
 module.exports = {
 
   signup: function(email, username, password, passwordConfirmation) {
-    SmallAppDispatcher.handleViewAction({
+      AppDispatcher.handleViewAction({
       type: ActionTypes.SIGNUP_REQUEST,
       email: email,
       username: username,
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   login: function(email, password) {
-    SmallAppDispatcher.handleViewAction({
+      AppDispatcher.handleViewAction({
       type: ActionTypes.LOGIN_REQUEST,
       email: email,
       password: password
@@ -27,10 +27,9 @@ module.exports = {
   },
 
   logout: function() {
-    SmallAppDispatcher.handleViewAction({
+      AppDispatcher.handleViewAction({
       type: ActionTypes.LOGOUT
     });
   }
-  
-};
 
+};

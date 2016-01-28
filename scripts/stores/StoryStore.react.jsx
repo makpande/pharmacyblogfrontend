@@ -1,10 +1,10 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var Constants = require('../constants/Constants.js');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var WebAPIUtils = require('../utils/WebAPIUtils.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _stories = [];
@@ -39,11 +39,11 @@ var StoryStore = assign({}, EventEmitter.prototype, {
 
 });
 
-StoryStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
+StoryStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.type) {
-    
+
     case ActionTypes.RECEIVE_STORIES:
       _stories = action.json.stories;
       StoryStore.emitChange();
@@ -59,7 +59,7 @@ StoryStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
       }
       StoryStore.emitChange();
       break;
-    
+
     case ActionTypes.RECEIVE_STORY:
       if (action.json) {
         _story = action.json.story;
@@ -76,4 +76,3 @@ StoryStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
 });
 
 module.exports = StoryStore;
-

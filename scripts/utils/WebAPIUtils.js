@@ -1,5 +1,5 @@
 var ServerActionCreators = require('../actions/ServerActionCreators.react.jsx');
-var SmallConstants = require('../constants/SmallConstants.js');
+var Constants = require('../constants/Constants.js');
 var request = require('superagent');
 
 function _getErrors(res) {
@@ -14,14 +14,14 @@ function _getErrors(res) {
   return errorMsgs;
 }
 
-var APIEndpoints = SmallConstants.APIEndpoints;
+var APIEndpoints = Constants.APIEndpoints;
 
 module.exports = {
 
   signup: function(email, username, password, passwordConfirmation) {
     request.post(APIEndpoints.REGISTRATION)
-      .send({ user: { 
-        email: email, 
+      .send({ user: {
+        email: email,
         username: username,
         password: password,
         password_confirmation: passwordConfirmation
@@ -100,4 +100,3 @@ module.exports = {
   }
 
 };
-

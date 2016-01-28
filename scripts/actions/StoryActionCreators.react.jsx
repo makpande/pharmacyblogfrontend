@@ -1,20 +1,20 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var Constants = require('../constants/Constants.js');
 var WebAPIUtils = require('../utils/WebAPIUtils.js');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 
 module.exports = {
 
   loadStories: function() {
-    SmallAppDispatcher.handleViewAction({
+      AppDispatcher.handleViewAction({
       type: ActionTypes.LOAD_STORIES
     });
     WebAPIUtils.loadStories();
   },
-  
+
   loadStory: function(storyId) {
-    SmallAppDispatcher.handleViewAction({
+      AppDispatcher.handleViewAction({
       type: ActionTypes.LOAD_STORY,
       storyId: storyId
     });
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   createStory: function(title, body) {
-    SmallAppDispatcher.handleViewAction({
+      AppDispatcher.handleViewAction({
       type: ActionTypes.CREATE_STORY,
       title: title,
       body: body
@@ -31,4 +31,3 @@ module.exports = {
   }
 
 };
-

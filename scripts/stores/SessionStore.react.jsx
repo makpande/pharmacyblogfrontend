@@ -1,9 +1,9 @@
-var SmallAppDispatcher = require('../dispatcher/SmallAppDispatcher.js');
-var SmallConstants = require('../constants/SmallConstants.js');
+var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var Constants = require('../constants/Constants.js');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var ActionTypes = SmallConstants.ActionTypes;
+var ActionTypes = Constants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 // Load an access token from the session storage, you might want to implement
@@ -13,7 +13,7 @@ var _email = sessionStorage.getItem('email');
 var _errors = [];
 
 var SessionStore = assign({}, EventEmitter.prototype, {
-  
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -27,7 +27,7 @@ var SessionStore = assign({}, EventEmitter.prototype, {
   },
 
   isLoggedIn: function() {
-    return _accessToken ? true : false;    
+    return _accessToken ? true : false;
   },
 
   getAccessToken: function() {
@@ -44,7 +44,7 @@ var SessionStore = assign({}, EventEmitter.prototype, {
 
 });
 
-SessionStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
+SessionStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.type) {
@@ -73,9 +73,8 @@ SessionStore.dispatchToken = SmallAppDispatcher.register(function(payload) {
 
     default:
   }
-  
+
   return true;
 });
 
 module.exports = SessionStore;
-
