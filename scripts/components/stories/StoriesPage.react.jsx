@@ -10,12 +10,12 @@ var moment = require('moment');
 var StoriesPage = React.createClass({
 
   getInitialState: function() {
-    return { 
-      stories: StoryStore.getAllStories(), 
+    return {
+      stories: StoryStore.getAllStories(),
       errors: []
     };
   },
- 
+
   componentDidMount: function() {
     StoryStore.addChangeListener(this._onChange);
     StoryActionCreators.loadStories();
@@ -26,10 +26,10 @@ var StoriesPage = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({ 
+    this.setState({
       stories: StoryStore.getAllStories(),
       errors: StoryStore.getErrors()
-    }); 
+    });
   },
 
   render: function() {
@@ -75,4 +75,3 @@ var StoriesList = React.createClass({
 });
 
 module.exports = StoriesPage;
-

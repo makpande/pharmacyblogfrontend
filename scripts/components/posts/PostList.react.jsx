@@ -42,8 +42,8 @@ var PostList = React.createClass({
         </div>
       </div>
     );
-  },
-
+  }
+});
   var PostList = React.createClass({
     render: function() {
       return (
@@ -53,7 +53,27 @@ var PostList = React.createClass({
           })}
         </ul>
       );
-    },
+    }
+});
+
+
+var PostItem = React.createClass({
+  render: function() {
+    return (
+      <li className="post">
+        <div className="post__title">
+          <Link to="post" params={ {postId: this.props.post.id} }>
+            {this.props.post.title}
+          </Link>
+        </div>
+        <div className="post__body">{this.props.post['abstract']}...</div>
+        <span className="post__user">{this.props.post.user.username}</span>
+        <span className="post__date"> - {moment(this.props.post.created_at).fromNow()}</span>
+      </li>
+      );
+  }
+});
+
 
     // render: function() {
     //     return (
@@ -77,6 +97,6 @@ var PostList = React.createClass({
     //   }
 
 
-});
+
 
 module.exports = PostList;

@@ -20,7 +20,7 @@ module.exports = (
     <DefaultRoute handler={HomePage} />
     <Route name="login" path="/login" handler={LoginPage}/>
     <Route name="signup" path="/signup" handler={SignupPage}/>
-    <Route name="stories" path="/stories" handler={StoriesPage}/>
+    <Route name="topics" path="/topics" handler={StoriesPage}/>
     <Route name="homepage" path="/homepage" handler={HomePage}/>
     <Route name="story" path="/stories/:storyId" handler={StoryPage} />
     <Route name="new-story" path="/story/new" handler={StoryNew}/>
