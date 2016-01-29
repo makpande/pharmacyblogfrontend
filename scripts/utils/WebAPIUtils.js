@@ -97,6 +97,18 @@ module.exports = {
           }
         }
       });
+  },
+
+  loadPosts: function() {
+    request.get(APIEndpoints.POSTS)
+    .set('Accept', 'application/json')
+    .set('Authorization', sessionStorage.getItem('accessToken'))
+    .end(function(error, res){
+      if (res) {
+        json = JSON.parse(res.text);
+        ServerActionCreators.receivePosts(json);
+      }
+    });
   }
 
 };

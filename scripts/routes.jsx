@@ -9,6 +9,7 @@ var StoriesPage = require('./components/stories/StoriesPage.react.jsx');
 var StoryPage = require('./components/stories/StoryPage.react.jsx');
 var StoryNew = require('./components/stories/StoryNew.react.jsx');
 var SignupPage = require('./components/session/SignupPage.react.jsx');
+var PostList = require('./components/posts/PostList.react.jsx');
 var HomePage = require('./components/static/HomePage.react.jsx');
 var Pharmacy = require('./components/static/Pharmacy.react.jsx');
 var AboutView = require('./components/static/AboutView.react.jsx');
@@ -23,6 +24,7 @@ module.exports = (
     <Route name="homepage" path="/homepage" handler={HomePage}/>
     <Route name="story" path="/stories/:storyId" handler={StoryPage} />
     <Route name="new-story" path="/story/new" handler={StoryNew}/>
+    <Route name="posts" path="/posts" handler={PostList}/>
     <Route name="pharmacy" path="/pharmacy" handler={Pharmacy}/>
     <Route name="contact" path="/contact" handler={ContactView}/>
     <Route name="about" path="/about" handler={AboutView}/>

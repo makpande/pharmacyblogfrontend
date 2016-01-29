@@ -2,6 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var Constants = require('../constants/Constants.js');
 var SessionStore = require('../stores/SessionStore.react.jsx');
 var StoryStore = require('../stores/StoryStore.react.jsx');
+var PostStore = require('../stores/PostStore.react.jsx');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
@@ -42,7 +43,8 @@ var RouteStore = assign({}, EventEmitter.prototype, {
 RouteStore.dispatchToken = AppDispatcher.register(function(payload) {
     AppDispatcher.waitFor([
     SessionStore.dispatchToken,
-    StoryStore.dispatchToken
+    StoryStore.dispatchToken,
+    PostStore.dispatchToken
   ]);
 
   var action = payload.action;
